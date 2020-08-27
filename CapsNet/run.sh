@@ -10,7 +10,7 @@ fi
 
 
 echo "Starting training, with options '${TRAIN_OPTS}' for model '${TRAIN_MODEL}'\n"
-python train.py ${TRAIN_OPTS} --model ${TRAIN_MODEL}
+python3 train.py ${TRAIN_OPTS} --model ${TRAIN_MODEL}
 echo "Training finished\n"
 
 
@@ -30,6 +30,6 @@ if [ -e "reconstructions-${TRAIN_MODEL}.tgz" ] && [ ! -d "reconstructions-${TRAI
 	rm "reconstructions-${TRAIN_MODEL}.tgz"
 fi
 tar -czf "reconstructions-${TRAIN_MODEL}.tgz" reconstructions/
-rm -r reconstrions/
+rm -r reconstructions/
 echo "Finished exporting reconstructions\n"
 

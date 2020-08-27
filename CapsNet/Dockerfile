@@ -7,13 +7,17 @@ RUN apt update && apt upgrade -y --no-install-recommends
 # Install Python, pip and Git
 RUN apt install -y --no-install-recommends python3 python3-pip git
 
-# Install PyTorch, Torchvision and TensorboardX (undocumented in CapsNet)
-RUN pip3 install torch=="1.0.1" torchvision=="0.2.1" tensorboardX
+# Copy my requirements file
+COPY requirements.txt /root/requirements.txt
 
+# Install everything from the requirements file
+RUN pip3 install --quiet --no-cache-dir -r /root/requirements.txt
+
+# Copy the run script
 COPY run.sh /usr/local/bin/
 
 # Set the current working directory to the mounted project directory
 RUN mkdir -p /project/ewout/CapsNet
 
-CMD ["sh", "/usr/local/bin/run.sh"]
+CMD ["bash", "/usr/local/bin/run.sh"]
 

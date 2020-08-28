@@ -16,8 +16,5 @@ RUN pip3 install --quiet --no-cache-dir -r /root/requirements.txt
 # Copy the run script
 COPY run.sh /usr/local/bin/
 
-# Set the current working directory to the mounted project directory
-RUN mkdir -p /project/ewout/CapsNet
-
 CMD ["bash", "/usr/local/bin/run.sh"]
 
